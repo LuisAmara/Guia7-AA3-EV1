@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Plantillas/template :: head}">
+	<meta charset="ISO-8859-1">
+	<title>Pagina</title>
+</head>
+
+<body>
+
+	<header th:replace="~{Plantillas/template :: header}"></header>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+
+	</div>
+
+
+	<div class="container">
+
+		<a class="btn btn-primary btn-sm" th:href="@{/Views/Clientes/create}" th:text="'Nuevo Cliente'"
+			title="Crear nuevo registro">
+
+
+		</a>
+
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+
+					<th scope="col">Id</th>
+					<th scope="col">Nombres</th>
+					<th scope="col">Apellidos</th>
+					<th scope="col">Teléfono</th>
+					<th scope="col">Correos</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="cl:${Clientes}" >
+					<th scope="row" th:text="${cl.id}"></th>
+					<td th:text="${cl.nombre}"></td>
+					<td th:text="${cl.apellido}"></td>
+					<td th:text="${cl.numero}"></td>
+					<td th:text="${cl.correo}"></td>
+					<td>
+						<a class="btn btn-success btn-sm" th:href="@{/Views/Clientes/edit/} + ${cl.id}"
+							th:text="'Editar'" title=" Modificar registro">
+						</a>
+					</td>
+
+					<td>
+
+						<a class="btn btn-success btn-sm" th:href="@{/Views/Clientes/delete/} + ${cl.id}"
+							th:text="'Eliminar'" title=" Eliminar registro">
+						</a>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<footer th:replace="~{Plantillas/template :: footer}"></footer>
+
+</body>
+
+</html>
